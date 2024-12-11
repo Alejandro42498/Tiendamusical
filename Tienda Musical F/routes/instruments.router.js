@@ -35,7 +35,6 @@ instrumentsRouter.post(
     }
 );
 
-
 // Actualizar un instrumento por ID
 instrumentsRouter.post(
     '/edit/:id',
@@ -59,7 +58,6 @@ instrumentsRouter.post(
         }
     }
 );
-
 
 // Obtener un instrumento por ID
 instrumentsRouter.get(
@@ -100,6 +98,7 @@ instrumentsRouter.get(
         }
     }
 );*/
+
 instrumentsRouter.post("/destroy/:id", async (req, res) => {
     console.log("params", req.params);
     const { id } = req.params;

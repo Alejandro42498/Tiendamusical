@@ -3,6 +3,7 @@ import { instrumentsFileRouter } from "./instruments.file.router.js";
 import { instrumentsRouter } from "./instruments.router.js";
 import { instrumentsViewsRouter } from "./instruments.views.router.js";
 import { authRouter } from "./auth.router.js";
+//import { ordersRouter } from "./orders.router.js";
 
 export function routerInstruments(app) {
     // Rutas de autenticación
@@ -11,7 +12,6 @@ export function routerInstruments(app) {
     // Rutas de vistas de instrumentos
     app.use("/instruments", instrumentsRouter);
     
-
     // API para gestionar instrumentos
     const apiRouter = express.Router();
     apiRouter.use("/file/instruments", instrumentsFileRouter);
@@ -21,4 +21,9 @@ export function routerInstruments(app) {
 
     // Ruta base para vistas generales
     app.use("/", instrumentsViewsRouter);
+}
+
+export function ordersRouter(app) {
+    // Rutas de vistas de pedidos
+    app.use("/orders", ordersRouter);
 }
