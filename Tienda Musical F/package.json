@@ -1,0 +1,25 @@
+{
+  "name": "tienda-musical-f",
+  "version": "1.0.0",
+  "description": "Tienda musical web 2",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "npx nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alejandro Gil Llano",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "csurf": "^1.10.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "path": "^0.12.7",
+    "pgtools": "^1.0.1",
+    "sequelize": "^6.37.5"
+  }
+}

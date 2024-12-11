@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruments Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <header class="bg-dark text-light py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="h3 mb-0">Tienda Estéreo</h1>
+            <div>
+                <a href="http://localhost:3000/cart/" class="btn btn-secondary me-2">Ir al carrito</a>
+                <a href="http://localhost:3000/auth/login" class="btn btn-primary">Iniciar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-4">
+        <% if (categories && categories.length > 0) { %>
+            <% categories.forEach(category => { %>
+                <section class="mb-5">
+                    <h2 class="text-secondary border-bottom pb-2 fw-bold"><%= category.name %></h2>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <% category.products.forEach(product => { %>
+                            <div class="col">
+                                <div class="card h-100 shadow-sm">
+                                    <img src="/images/<%= product.imagePath %>" class="card-img-top" alt="<%= product.name %>">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title text-truncate"><%= product.name %></h5>
+                                        <p class="card-text fw-bold text-success">$<%= parseFloat(product.price).toLocaleString('es-CO') %></p>
+                                        <form action="/cart/add" method="post" class="mt-auto">
+                                            <input type="hidden" name="productId" value="<%= product.id %>">
+                                            <button type="submit" class="btn btn-success w-100">Agregar al carrito</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </section>
+            <% }) %>
+        <% } else { %>
+            <p class="text-center text-muted">No hay productos disponibles.</p>
+        <% } %>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
