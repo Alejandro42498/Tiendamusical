@@ -17,6 +17,25 @@ cartRouter.post('/add', async (req, res) => {
             req.session.cart = [];
         }
 
+// Ruta para vaciar el carrito
+cartRouter.post('/clear', (req, res) => {
+    try {
+        if (!req.session) {
+            return res.status(500).json({ error: 'Session is not initialized' });
+        }
+
+        // Vaciar completamente el carrito
+        req.session.cart = []; // Asignar un arreglo vacío
+
+        console.log("Carrito vaciado:", req.session.cart);
+
+        res.status(200).json({ success: true, message: 'Carrito vaciado exitosamente.' });
+    } catch (error) {
+        console.error('Error al vaciar el carrito:', error.message);
+        res.status(500).json({ error: 'Error interno del servidor.' });
+    }
+});
+
         // Verificar si el producto ya está en el carrito
         const existingProduct = req.session.cart.find(item => item.id === parseInt(productId, 10));
 

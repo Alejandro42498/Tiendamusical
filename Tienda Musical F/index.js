@@ -14,9 +14,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(session({
+    secret: 'mi secreto', // Cambia esto por una clave secreta segura
+    resave: false, // No volver a guardar la sesión si no se modifica
+    saveUninitialized: true, // Guardar sesiones no inicializadas
+    cookie: { secure: false } // Cambia a true si usas HTTPS
+}));
 app.use(
     session({
-        secret: process.env.SESSION_SECRET || 'secret',
+        secret: process.env.SESSION_SECRET || 'mi secreto',
         resave: false,
         saveUninitialized: true,
         cookie: { secure: false } 
