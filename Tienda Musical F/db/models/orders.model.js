@@ -25,13 +25,13 @@ export function defineOrder (sequelize) {
         },
     },
     productIds: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER), // Guarda una lista de IDs de productos
+        type: DataTypes.ARRAY(DataTypes.INTEGER), 
         allowNull: false,
         defaultValue: [],
     },
 }, {
-    timestamps: true, // Agrega createdAt y updatedAt automáticamente
-    tableName: "orders", // Nombre de la tabla en la base de datos
+    timestamps: true, 
+    tableName: "orders"
 });
 
-export default Order;
+
